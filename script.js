@@ -2,12 +2,14 @@
 /**
  * rappeler les élement du DOM
  */
-const facebookEL = document.querySelector('.grid1')
-const twiterEl = document.querySelector('.grid2');
-const instaEl = document.querySelector('.grid3');
+//const facebookEL = document.querySelector('.grid1')
+//const twiterEl = document.querySelector('.grid2');
+//const instaEl = document.querySelector('.grid3');
 const textEl = document.querySelectorAll('.text');
 const gridEl = document.querySelectorAll('.box');
-const gridStyle = document.querySelector('.grid-el');
+const parentDiv = document.querySelector('.grid-el');
+const originalColor = getComputedStyle(parentDiv).backgroundColor;
+
 
 
 console.log(gridEl);
@@ -18,17 +20,17 @@ console.log(textEl);
  * ciblés les 3 boites et mettre le style de la 
  * classe active( changer les styles  ),
  * dans la ligne 24 j'ai cree une nouvelle variable 
- * pour sibler le texte de chaque grid(boite).
+ * pour cibler le texte de chaque grid(boite).
  */
 gridEl.forEach(grid => {
 
 	grid.addEventListener('click', () => {
 		const gridColor = getComputedStyle(grid).backgroundColor;
-		gridStyle.style.backgroundColor = gridColor;
+		 
 
-		if (gridStyle.style.backgroundColor === gridColor) {
-			gridStyle.style.backgroundColor = ' ';
-		} else { gridStyle.style.backgroundColor = gridColor; }
+		if (parentDiv.style.backgroundColor === gridColor) {
+			parentDiv.style.backgroundColor = originalColor;
+		} else { parentDiv.style.backgroundColor = gridColor; }
 		grid.classList.toggle('active');
 
 		const text = grid.querySelector('.text')
