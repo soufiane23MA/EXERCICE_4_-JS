@@ -8,7 +8,9 @@
 const textEl = document.querySelectorAll('.text');
 const gridEl = document.querySelectorAll('.box');
 const parentDiv = document.querySelector('.grid-el');
+const bodyEl = document.querySelector('.body');
 const originalColor = getComputedStyle(parentDiv).backgroundColor;
+const originalBodyColor = getComputedStyle(bodyEl).backgroundColor;
 
 
 
@@ -25,19 +27,35 @@ console.log(textEl);
 gridEl.forEach(grid => {
 
 	grid.addEventListener('click', () => {
+		const bodyColor = getComputedStyle(grid).backgroundColor;
 		const gridColor = getComputedStyle(grid).backgroundColor;
+
+		if (bodyEl.style.backgroundColor === gridColor) {
+			bodyEl.style.backgroundColor = originalBodyColor;
+			 
+		} else {
+			bodyEl.style.backgroundColor = gridColor;
+			 
+			 
+			 
+		 }
 		 
 
-		if (parentDiv.style.backgroundColor === gridColor) {
+		/*if (parentDiv.style.backgroundColor === gridColor) {
 			parentDiv.style.backgroundColor = originalColor;
-		} else { parentDiv.style.backgroundColor = gridColor; }
+		} else { parentDiv.style.backgroundColor = gridColor; }*/
+		
 		grid.classList.toggle('active');
-
 		const text = grid.querySelector('.text')
+
 		if (text.style.visibility === "visible") {
 			text.style.visibility = "hidden";
 
 		} else { text.style.visibility = "visible"; }
+		const icon = grid.querySelector('.icon i');
+		if (icon) {
+			icon.classList.toggle('bouge');
+		}else{ icon.classList.toggle('icon i') }
 	});
 
 });
@@ -78,4 +96,15 @@ facebookEL.addEventListener('click', () => {
 		textEl.style.visibility = "hidden";
 	} else { textEl.style.visibility = "visible"; }
 
+});*/
+/*const iconEl = document.querySelector('.icon i');
+iconEl.addEventListener('click', () => {
+	iconEl.classList.toggle('bouge');
+	console.log(iconEl);
+})*/
+/*const iconEl = document.querySelectorAll('.icon i');
+iconEl.forEach(icon => {
+	icon.addEventListener('click',() => {
+	icon.classList.toggle('bouge');
+})
 });*/
